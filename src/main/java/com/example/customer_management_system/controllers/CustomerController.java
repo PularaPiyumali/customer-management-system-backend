@@ -1,6 +1,8 @@
 package com.example.customer_management_system.controllers;
 
 import com.example.customer_management_system.dto.CustomerDTO;
+import com.example.customer_management_system.entities.City;
+import com.example.customer_management_system.entities.Country;
 import com.example.customer_management_system.services.CustomerService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -12,8 +14,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @AllArgsConstructor
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/customers")
 public class CustomerController {
@@ -57,5 +61,25 @@ public class CustomerController {
         Pageable pageable = PageRequest.of(page, size);
         Page<CustomerDTO> customers = customerService.getAllCustomers(pageable);
         return ResponseEntity.ok(customers);
+    }
+
+    @GetMapping("/cities")
+    public ResponseEntity<List<City>> getAllCities() {
+        try {
+            List<City> cities = customerService.getAllCities();
+            return ResponseEntity.ok(cities);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @GetMapping("/countries")
+    public ResponseEntity<List<Country>> getAllCountries() {
+        try {
+            List<Country> countries = customerService.getAllCountries();
+            return ResponseEntity.ok(countries);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
     }
 }

@@ -3,13 +3,11 @@ package com.example.customer_management_system.services;
 import com.example.customer_management_system.dto.AddressDTO;
 import com.example.customer_management_system.dto.CustomerDTO;
 import com.example.customer_management_system.dto.FamilyMemberDTO;
-import com.example.customer_management_system.entities.Address;
-import com.example.customer_management_system.entities.City;
-import com.example.customer_management_system.entities.Customer;
-import com.example.customer_management_system.entities.MobileNumber;
+import com.example.customer_management_system.entities.*;
 import com.example.customer_management_system.exceptions.CustomerNotFoundException;
 import com.example.customer_management_system.exceptions.DuplicateNicException;
 import com.example.customer_management_system.repository.CityRepository;
+import com.example.customer_management_system.repository.CountryRepository;
 import com.example.customer_management_system.repository.CustomerRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -30,6 +28,7 @@ import java.util.stream.Collectors;
 public class CustomerService {
     private CustomerRepository customerRepository;
     private CityRepository cityRepository;
+    private CountryRepository countryRepository;
 
     public CustomerDTO createCustomer(CustomerDTO customerDTO) {
         if (customerRepository.existsByNicNumber(customerDTO.getNicNumber())) {
@@ -312,5 +311,15 @@ public class CustomerService {
         }
 
         return dto;
+    }
+
+    @Transactional(readOnly = true)
+    public List<City> getAllCities() {
+        return cityRepository.findAllWithCountry();
+    }
+
+    @Transactional(readOnly = true)
+    public List<Country> getAllCountries() {
+        return countryRepository.findAll();
     }
 }
