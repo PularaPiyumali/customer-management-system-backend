@@ -16,5 +16,4 @@ public class AddressDTO {
     private Long cityId;
     private String cityName;
     private String countryName;
-
 }

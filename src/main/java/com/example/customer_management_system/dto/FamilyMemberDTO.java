@@ -12,7 +12,6 @@ import java.time.LocalDate;
 @Getter
 @Setter
 public class FamilyMemberDTO {
-
     private String familyMemberName;
     private String nicNumber;
     private LocalDate dateOfBirth;

@@ -39,5 +39,4 @@ public class CustomerDTO {
         this.dateOfBirth = dateOfBirth;
         this.nicNumber = nicNumber;
     }
-
 }
