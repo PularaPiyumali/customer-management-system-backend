@@ -11,13 +11,6 @@ A Spring Boot REST API for managing customers.
 - **Maven**
 - **Spring Boot Validation**
 
-## Features
-
-- ✅ CRUD operations for customers
-- ✅ Family member relationships
-- ✅ Multiple addresses and mobile numbers per customer
-- ✅ Master data for cities and countries
-
 ## Project Structure
 
 ```
