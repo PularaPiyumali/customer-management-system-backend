@@ -14,28 +14,23 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "addresses")
 public class Address {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "customer_id", nullable = false)
     @JsonBackReference
     private Customer customer;
-
     @Column(name = "address_line_1", nullable = false)
     private String addressLine1;
-
     @Column(name = "address_line_2")
     private String addressLine2;
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "city_id", nullable = false)
     private City city;
-
     @Column(name = "created_at")
     private LocalDateTime createdAt;
-
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 

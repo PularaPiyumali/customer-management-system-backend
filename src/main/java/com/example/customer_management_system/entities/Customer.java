@@ -25,39 +25,30 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @NotBlank(message = "Name is mandatory")
     @Column(nullable = false)
     private String name;
-
     @NotNull(message = "Date of birth is mandatory")
     @Column(name = "date_of_birth", nullable = false)
     private LocalDate dateOfBirth;
-
     @NotBlank(message = "NIC number is mandatory")
     @Column(name = "nic_number", nullable = false, unique = true)
     private String nicNumber;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_customer_id")
     @JsonBackReference
     private Customer parentCustomer;
-
     @OneToMany(mappedBy = "parentCustomer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference
     private List<Customer> familyMembers = new ArrayList<>();
-
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @JsonManagedReference
     private Set<MobileNumber> mobileNumbers = new HashSet<>();
-
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @JsonManagedReference
     private Set<Address> addresses = new HashSet<>();
-
     @Column(name = "created_at")
     private LocalDateTime createdAt;
-
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 

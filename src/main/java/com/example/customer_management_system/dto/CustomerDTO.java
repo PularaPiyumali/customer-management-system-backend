@@ -19,24 +19,18 @@ import java.util.List;
 public class CustomerDTO {
 
     private Long id;
-
     @NotBlank(message = "Name is mandatory")
     private String name;
-
     @NotNull(message = "Date of birth is mandatory")
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateOfBirth;
-
     @NotBlank(message = "NIC number is mandatory")
     private String nicNumber;
-
     private List<String> mobileNumbers;
     private List<AddressDTO> addresses;
     private List<FamilyMemberDTO> familyMembers;
-
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createdAt;
-
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime updatedAt;
 

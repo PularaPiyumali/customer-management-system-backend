@@ -9,7 +9,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
 public class CustomerManagementSystemApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(CustomerManagementSystemApplication.class, args);
 	}
@@ -23,5 +22,4 @@ public class CustomerManagementSystemApplication {
 					.allowedMethods("*");
 		}
 	}
-
 }

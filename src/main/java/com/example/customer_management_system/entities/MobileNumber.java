@@ -18,15 +18,12 @@ public class MobileNumber {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "customer_id", nullable = false)
     @JsonBackReference
     private Customer customer;
-
     @Column(name = "mobile_number", nullable = false)
     private String mobileNumber;
-
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
