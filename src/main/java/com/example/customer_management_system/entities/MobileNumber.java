@@ -22,7 +22,7 @@ public class MobileNumber {
     @JoinColumn(name = "customer_id", nullable = false)
     @JsonBackReference
     private Customer customer;
-    @Column(name = "mobile_number", nullable = false)
+    @Column(name = "mobile_number", length = 15, nullable = false)
     private String mobileNumber;
     @Column(name = "created_at")
     private LocalDateTime createdAt;
