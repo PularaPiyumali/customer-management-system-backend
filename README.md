@@ -85,9 +85,9 @@ POST /api/customers
     ],
     "familyMembers": [
       {
-        "familyMemberName": "Amelia Fonseka",
-        "nicNumber": "199612345614",
-        "dateOfBirth": "1996-09-01"
+        "familyMemberName": "Liam Dias",
+        "nicNumber": "199212345601",
+        "dateOfBirth": "1992-06-15"
       }
     ]
   }
