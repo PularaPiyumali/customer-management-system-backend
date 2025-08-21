@@ -1,4 +1,4 @@
-package com.example.customer_management_system.dto;
+package com.example.customer_management_system.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;

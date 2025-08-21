@@ -1,10 +1,10 @@
-package com.example.customer_management_system.services;
+package com.example.customer_management_system.application;
 
-import com.example.customer_management_system.dto.BulkUploadResponse;
-import com.example.customer_management_system.entities.BulkProcessing;
-import com.example.customer_management_system.entities.Customer;
-import com.example.customer_management_system.repository.BulkProcessingRepository;
-import com.example.customer_management_system.repository.CustomerRepository;
+import com.example.customer_management_system.model.BulkUploadResponse;
+import com.example.customer_management_system.domain.entities.BulkProcessing;
+import com.example.customer_management_system.domain.entities.Customer;
+import com.example.customer_management_system.domain.repository.BulkProcessingRepository;
+import com.example.customer_management_system.domain.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -32,7 +32,13 @@ public class BulkCustomerService {
     @Value("${bulk.processing.batch-size:1000}")
     private int batchSize;
 
-    public BulkUploadResponse startBulkUpload(MultipartFile file) {
+    /**
+     * Start bulk upload response.
+     *
+     * @param file the file
+     * @return the bulk upload response
+     */
+public BulkUploadResponse startBulkUpload(MultipartFile file) {
         String jobId = UUID.randomUUID().toString();
 
         try {
