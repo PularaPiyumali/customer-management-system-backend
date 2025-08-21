@@ -71,28 +71,12 @@ public class CustomerController {
     return customers;
   }
 
-  @PostMapping(
-      value = "/bulk-upload",
-      consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
-      produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<BulkUploadResponse> bulkUploadCustomers(
-      @RequestParam("file") MultipartFile file) {
-
-    if (file == null || file.isEmpty()) {
-      BulkUploadResponse response = new BulkUploadResponse();
-      response.setStatus("FAILED");
-      response.setMessage("File is required and cannot be empty");
-      return ResponseEntity.badRequest().body(response);
-    }
-
-    BulkUploadResponse response = bulkCustomerService.startBulkUpload(file);
-
-    if ("FAILED".equals(response.getStatus())) {
-      return ResponseEntity.badRequest().body(response);
-    }
-
-    return ResponseEntity.accepted().body(response);
+  @PostMapping("/bulk-upload")
+  public BulkUploadResponse bulkUploadCustomers(@RequestParam("file") MultipartFile file) {
+    BulkUploadResponse response = bulkCustomerService.handleBulkUpload(file);
+    return response;
   }
+
 
   @GetMapping(value = "/bulk-upload/status/{jobId}", produces = MediaType.APPLICATION_JSON_VALUE)
   public BulkUploadResponse getBulkUploadStatus(@PathVariable String jobId) {
