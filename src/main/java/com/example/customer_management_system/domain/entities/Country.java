@@ -1,4 +1,4 @@
-package com.example.customer_management_system.entities;
+package com.example.customer_management_system.domain.entities;
 
 import lombok.*;
 
@@ -9,19 +9,15 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Getter
 @Setter
-@ToString
 @Entity
-@Table(name = "cities")
-public class City {
+@Table(name = "countries")
+public class Country {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String name;
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "country_id", nullable = false)
-    private Country country;
     @Column(name = "created_at")
     private LocalDateTime createdAt;
     @Column(name = "updated_at")

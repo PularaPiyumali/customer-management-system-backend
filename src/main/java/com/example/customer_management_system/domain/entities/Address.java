@@ -1,4 +1,4 @@
-package com.example.customer_management_system.entities;
+package com.example.customer_management_system.domain.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
@@ -10,7 +10,6 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Getter
 @Setter
-@ToString
 @Entity
 @Table(name = "addresses")
 public class Address {

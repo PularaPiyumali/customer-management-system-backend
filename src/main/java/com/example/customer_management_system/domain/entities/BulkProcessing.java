@@ -1,4 +1,4 @@
-package com.example.customer_management_system.entities;
+package com.example.customer_management_system.domain.entities;
 
 import lombok.*;
 
@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Getter
 @Setter
-@ToString
 @Entity
 @Table(name = "bulk_processing")
 public class BulkProcessing {

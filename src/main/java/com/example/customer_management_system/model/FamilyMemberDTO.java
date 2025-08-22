@@ -1,4 +1,4 @@
-package com.example.customer_management_system.dto;
+package com.example.customer_management_system.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

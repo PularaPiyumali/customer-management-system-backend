@@ -1,5 +1,6 @@
-package com.example.customer_management_system.entities;
+package com.example.customer_management_system.domain.entities;
 
+import com.example.customer_management_system.domain.entities.Country;
 import lombok.*;
 
 import javax.persistence.*;
@@ -9,16 +10,18 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Getter
 @Setter
-@ToString
 @Entity
-@Table(name = "countries")
-public class Country {
+@Table(name = "cities")
+public class City {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String name;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "country_id", nullable = false)
+    private Country country;
     @Column(name = "created_at")
     private LocalDateTime createdAt;
     @Column(name = "updated_at")
